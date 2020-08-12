@@ -6,7 +6,6 @@ import ace.authentication.base.api.client.application.AccountIdentityClientJUnit
 import ace.authentication.base.api.IdentityBaseApi;
 import ace.authentication.base.define.dao.enums.account.AccountRegisterSourceEnum;
 import ace.authentication.base.define.dao.enums.accountevent.AccountEventEventTypeEnum;
-import ace.authentication.base.define.dao.enums.account.AccountBizTypeEnum;
 import ace.authentication.base.define.dao.enums.account.AccountStateEnum;
 import ace.authentication.base.define.dao.model.entity.AccountEvent;
 import ace.authentication.base.define.dao.model.entity.Account;
@@ -76,7 +75,6 @@ public class CheckAllBizTest {
         LoginSuccessEventLogParams eventParams = LoginSuccessEventLogParams.builder()
                 .accountId(account.getId())
                 .appId(account.getAppId())
-                .bizType(AccountBizTypeEnum.USER.getCode())
                 .loginTime(LocalDateTime.now())
                 .ip("127.0.0.1")
                 .loginSource(LoginSourceEnum.PC.getCode())
@@ -101,7 +99,6 @@ public class CheckAllBizTest {
         Account account = accountBaseApi.findByAppIdAndMobile(FindByAppIdAndMobileRequest.builder()
                 .appId(registerByMobileAccount.getAppId())
                 .mobile(registerByMobileAccount.getMobile())
-                .bizType(registerByMobileAccount.getBizType())
                 .build()).check();
         if (account == null) {
             throw new RuntimeException("[accountBaseApi][findByAppIdAndMobile]测试不通过");
@@ -112,7 +109,6 @@ public class CheckAllBizTest {
         Account preAccount = accountBaseApi.findByAppIdAndUserName(FindByAppIdAndUserNameRequest.builder()
                 .appId(account.getAppId())
                 .userName(account.getUserName())
-                .bizType(account.getBizType())
                 .build()).check();
         if (preAccount == null) {
             throw new RuntimeException("[accountBaseApi][findByAppIdAndUserName]测试不通过");
@@ -122,7 +118,6 @@ public class CheckAllBizTest {
     private void testExistsByMobile(Account account) {
         Boolean isExist = identityBaseApi.existsByMobile(ExistsByMobileRequest.builder()
                 .appId(account.getAppId())
-                .bizType(account.getBizType())
                 .mobile(account.getMobile())
                 .build())
                 .check();
@@ -134,7 +129,6 @@ public class CheckAllBizTest {
     private void testExistsByUserName(Account account) {
         Boolean isExist = identityBaseApi.existsByUserName(ExistsByUserNameRequest.builder()
                 .appId(account.getAppId())
-                .bizType(account.getBizType())
                 .userName(account.getUserName())
                 .build())
                 .check();
@@ -145,7 +139,6 @@ public class CheckAllBizTest {
 
     private Account testRegisterUserName() {
         Account account = Account.builder()
-                .bizType(AccountBizTypeEnum.USER.getCode())
                 .userName(AceUUIDUtils.generateTimeUUIDShort32())
                 .password("123456")
                 .appId(AceUUIDUtils.generateTimeUUIDShort32())
@@ -166,7 +159,6 @@ public class CheckAllBizTest {
         RegisterSuccessEventLogParams eventParams = RegisterSuccessEventLogParams.builder()
                 .accountId(account.getId())
                 .appId(account.getAppId())
-                .bizType(AccountBizTypeEnum.USER.getCode())
                 .registerTime(LocalDateTime.now())
                 .registerSource(account.getRegisterSource())
                 .ip("127.0.0.1")
@@ -195,7 +187,7 @@ public class CheckAllBizTest {
 
     private Account testRegisterMobile() {
         Account account = Account.builder()
-                .bizType(AccountBizTypeEnum.USER.getCode())
+
                 .userName(null)
                 .password("123456")
                 .appId(AceUUIDUtils.generateTimeUUIDShort32())

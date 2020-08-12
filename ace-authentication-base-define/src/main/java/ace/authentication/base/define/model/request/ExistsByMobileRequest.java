@@ -1,6 +1,5 @@
 package ace.authentication.base.define.model.request;
 
-import ace.authentication.base.define.constraint.AccountBizTypeConstraint;
 import ace.authentication.base.define.dao.model.entity.Account;
 import ace.common.base.define.model.constraint.AppIdConstraint;
 import ace.common.base.define.model.constraint.MobileConstraint;
@@ -31,7 +30,4 @@ public class ExistsByMobileRequest {
     @NotBlank(message = "请输入" + MobileConstraint.FIELD_NAME)
     @ApiModelProperty(value = MobileConstraint.FIELD_NAME, required = true)
     private String mobile;
-    @AccountBizTypeConstraint
-    @ApiModelProperty(value = Account.ACCOUNT_BIZ_TYPE_REMARK, required = true)
-    private String bizType;
 }

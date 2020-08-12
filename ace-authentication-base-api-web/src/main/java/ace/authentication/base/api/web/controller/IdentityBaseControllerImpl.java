@@ -4,7 +4,6 @@ package ace.authentication.base.api.web.controller;
 import ace.authentication.base.api.web.dao.AccountEventDbService;
 import ace.authentication.base.api.web.dao.AccountDbService;
 import ace.authentication.base.define.dao.model.entity.Account;
-import ace.authentication.base.define.dao.enums.account.AccountBizTypeEnum;
 import ace.authentication.base.define.model.request.ExistsByUserNameRequest;
 import ace.authentication.base.define.model.request.ExistsByMobileRequest;
 import ace.authentication.base.define.model.request.RegisterRequest;
@@ -38,8 +37,7 @@ public class IdentityBaseControllerImpl implements IdentityBaseController {
                 .lambdaQuery()
                 .select(Account::getId)
                 .eq(Account::getAppId, request.getAppId())
-                .eq(Account::getMobile, request.getMobile())
-                .eq(Account::getBizType, request.getBizType());
+                .eq(Account::getMobile, request.getMobile());
 
         Account account = queryChainWrapper.one();
 
@@ -48,13 +46,11 @@ public class IdentityBaseControllerImpl implements IdentityBaseController {
 
     @Override
     public GenericResponseExt<Boolean> existsByUserName(@Valid ExistsByUserNameRequest request) {
-        AccountBizTypeEnum accountBizTypeEnum = AceEnumUtils.getEnum(AccountBizTypeEnum.class, request.getBizType());
         LambdaQueryChainWrapper<Account> queryChainWrapper = accountDbService
                 .lambdaQuery()
                 .select(Account::getId)
                 .eq(Account::getAppId, request.getAppId())
-                .eq(Account::getUserName, request.getUserName())
-                .eq(Account::getBizType, accountBizTypeEnum.getCode());
+                .eq(Account::getUserName, request.getUserName());
 
         Account account = queryChainWrapper.one();
 

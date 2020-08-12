@@ -4,7 +4,6 @@ import ace.authentication.base.api.AccountBaseApi;
 import ace.authentication.base.api.IdentityBaseApi;
 import ace.authentication.base.api.web.AuthenticationBaseApplication;
 import ace.authentication.base.api.web.dao.AccountEventDbService;
-import ace.authentication.base.define.dao.enums.account.AccountBizTypeEnum;
 import ace.authentication.base.define.dao.enums.account.AccountStateEnum;
 import ace.authentication.base.define.dao.enums.accountevent.AccountEventEventTypeEnum;
 import ace.authentication.base.define.dao.model.entity.Account;
@@ -48,7 +47,6 @@ public class CheckAllBizTest {
         Account account = Account.builder()
                 .id(AceUUIDUtils.generateTimeUUIDShort32())
                 .appId(AceUUIDUtils.generateTimeUUIDShort32())
-                .bizType(AccountBizTypeEnum.USER.getCode())
                 .userName(AceUUIDUtils.generateTimeUUIDShort32())
                 .password("123456")
                 .passwordEncryptionFactor("123456")
@@ -87,7 +85,6 @@ public class CheckAllBizTest {
         Account account = Account.builder()
                 .id(AceUUIDUtils.generateTimeUUIDShort32())
                 .appId(AceUUIDUtils.generateTimeUUIDShort32())
-                .bizType(AccountBizTypeEnum.USER.getCode())
                 .userName(AceUUIDUtils.generateTimeUUIDShort32())
                 .password("123456")
                 .passwordEncryptionFactor("123456")
@@ -127,7 +124,6 @@ public class CheckAllBizTest {
         Account account = Account.builder()
                 .id(AceUUIDUtils.generateTimeUUIDShort32())
                 .appId(AceUUIDUtils.generateTimeUUIDShort32())
-                .bizType(AccountBizTypeEnum.USER.getCode())
                 .email("279397942@qq.com")
                 .mobile("15099975786")
                 .userName("admin")

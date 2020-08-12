@@ -27,7 +27,6 @@ public class AccountBaseControllerImpl
         Account account = this.getDbService().lambdaQuery()
                 .eq(Account::getAppId, request.getAppId())
                 .eq(Account::getUserName, request.getUserName())
-                .eq(Account::getBizType, request.getBizType())
                 .one();
         return GenericResponseExtUtils.buildSuccessWithData(account);
     }
@@ -37,7 +36,6 @@ public class AccountBaseControllerImpl
         Account account = this.getDbService().lambdaQuery()
                 .eq(Account::getAppId, request.getAppId())
                 .eq(Account::getMobile, request.getMobile())
-                .eq(Account::getBizType, request.getBizType())
                 .one();
         return GenericResponseExtUtils.buildSuccessWithData(account);
     }

@@ -1,6 +1,5 @@
 package ace.authentication.base.define.model.request;
 
-import ace.authentication.base.define.constraint.AccountBizTypeConstraint;
 import ace.authentication.base.define.constraint.UserNameConstraint;
 import ace.authentication.base.define.dao.model.entity.Account;
 import ace.common.base.define.model.constraint.AppIdConstraint;
@@ -29,7 +28,4 @@ public class FindByAppIdAndUserNameRequest {
     @UserNameConstraint
     @ApiModelProperty(value = UserNameConstraint.FIELD_NAME, required = true)
     private String userName;
-    @AccountBizTypeConstraint
-    @ApiModelProperty(value = Account.ACCOUNT_BIZ_TYPE_REMARK, required = true)
-    private String bizType;
 }

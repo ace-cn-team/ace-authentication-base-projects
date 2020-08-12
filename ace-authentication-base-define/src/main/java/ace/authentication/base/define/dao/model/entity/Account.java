@@ -1,6 +1,5 @@
 package ace.authentication.base.define.dao.model.entity;
 
-import ace.authentication.base.define.dao.enums.account.AccountBizTypeEnum;
 import ace.authentication.base.define.dao.enums.account.AccountRegisterSourceEnum;
 import ace.fw.data.model.entity.Entity;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -61,12 +60,6 @@ public class Account implements Serializable, Entity {
 
     @ApiModelProperty(value = STATE_REMARK)
     private Integer state;
-
-    /**
-     * {@link AccountBizTypeEnum}
-     */
-    @ApiModelProperty(value = Account.ACCOUNT_BIZ_TYPE_REMARK)
-    private String bizType;
 
     @ApiModelProperty(value = "密码")
     private String password;
