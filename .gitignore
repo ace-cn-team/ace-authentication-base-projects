@@ -50,3 +50,8 @@
 /ace-account-base-api-client-junit/target/
 /ace-account-base-api-client-junit/ace-account-base-api-client-junit.iml
 /ace-account-base-define/target/
+/ace-authentication-base-api-client-junit/target/
+/ace-authentication-base-api-client-junit/ace-authentication-base-api-client-junit.iml
+/ace-authentication-base-define/target/
+/ace-authentication-base-define/ace-authentication-base-define.iml
+/ace-authentication-diagram/authentication-diagram.pdb
