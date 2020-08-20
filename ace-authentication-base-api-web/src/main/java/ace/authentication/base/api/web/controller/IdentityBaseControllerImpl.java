@@ -7,13 +7,20 @@ import ace.authentication.base.define.dao.model.entity.Account;
 import ace.authentication.base.define.model.request.ExistsByUserNameRequest;
 import ace.authentication.base.define.model.request.ExistsByMobileRequest;
 import ace.authentication.base.define.model.request.RegisterRequest;
+import ace.fw.logic.common.aop.Interceptor.handler.annotations.ThrowableHandlerAspect;
+import ace.fw.logic.common.aop.Interceptor.log.annotations.LogAspect;
 import ace.fw.model.response.GenericResponseExt;
 import ace.fw.util.AceEnumUtils;
 import ace.fw.util.GenericResponseExtUtils;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -25,6 +32,8 @@ import javax.validation.Valid;
  * @description
  */
 @RestController
+@Slf4j
+@LogAspect
 public class IdentityBaseControllerImpl implements IdentityBaseController {
     @Autowired
     private AccountDbService accountDbService;
@@ -33,6 +42,7 @@ public class IdentityBaseControllerImpl implements IdentityBaseController {
 
     @Override
     public GenericResponseExt<Boolean> existsByMobile(@Valid ExistsByMobileRequest request) {
+
         LambdaQueryChainWrapper<Account> queryChainWrapper = accountDbService
                 .lambdaQuery()
                 .select(Account::getId)
@@ -58,11 +68,18 @@ public class IdentityBaseControllerImpl implements IdentityBaseController {
 
     }
 
-    @Transactional(rollbackFor = {Exception.class})
+    @Transactional(rollbackFor = {Throwable.class})
     @Override
     public GenericResponseExt<Boolean> register(@Valid RegisterRequest request) {
         accountDbService.save(request.getAccount());
         accountEventDbService.save(request.getAccountEvent());
+        return GenericResponseExtUtils.buildSuccessWithData(true);
+    }
+
+    @ApiOperation(value = "测试")
+    @RequestMapping(path = "/test", method = RequestMethod.GET)
+    public GenericResponseExt<Boolean> test() {
+        log.info("111");
         return GenericResponseExtUtils.buildSuccessWithData(true);
     }
 }
