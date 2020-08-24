@@ -83,23 +83,33 @@ public class Account implements Serializable, Entity {
 
     public static final String ID = "id";
 
-    public static final String ACCOUNT_ID = "account_id";
+    public static final String APP_ID = "app_id";
 
-    public static final String ACCOUNT = "account";
+    public static final String USER_NAME = "user_name";
 
-    public static final String ACCOUNT_TYPE = "account_type";
+    public static final String EMAIL = "email";
 
-    public static final String ACCOUNT_PASSWORD = "account_password";
+    public static final String MOBILE = "mobile";
 
-    public static final String TENANT_ID = "tenant_id";
+    public static final String NICK_NAME = "nick_name";
+
+    public static final String AVATAR_URL = "avatar_url";
+
+    public static final String REGISTER_SOURCE = "register_source";
+
+    public static final String STATE = "state";
+
+    public static final String PASSWORD = "password";
+
+    public static final String PASSWORD_ENCRYPTION_FACTOR = "password_encryption_factor";
+
+    public static final String EXPIRE_TIME = "expire_time";
 
     public static final String UPDATE_TIME = "update_time";
 
     public static final String CREATE_TIME = "create_time";
 
     public static final String ROW_VERSION = "row_version";
-
-    public static final String REGISTER_SOURCE = "register_source";
 
     public static final String ACCOUNT_BIZ_TYPE_REMARK = "账号业务类型,platform-平台,user-客户,seller-商家";
 

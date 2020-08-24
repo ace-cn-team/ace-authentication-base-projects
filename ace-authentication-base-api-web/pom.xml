@@ -5,7 +5,7 @@
     <parent>
         <artifactId>ace-authentication-base-projects</artifactId>
         <groupId>org.ace</groupId>
-        <version>1.0.0.5</version>
+        <version>1.0.0.7</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -52,6 +52,11 @@
         <dependency>
             <groupId>org.ace</groupId>
             <artifactId>ace-fw-junit-test-starter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

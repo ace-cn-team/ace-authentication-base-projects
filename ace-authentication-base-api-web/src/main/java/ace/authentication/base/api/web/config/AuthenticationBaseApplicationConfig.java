@@ -1,6 +1,7 @@
 package ace.authentication.base.api.web.config;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -12,5 +13,4 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @MapperScan("ace.authentication.base.api.web.dao.mapper")
 public class AuthenticationBaseApplicationConfig {
-
 }

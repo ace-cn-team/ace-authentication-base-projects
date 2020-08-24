@@ -7,7 +7,7 @@
         <groupId>org.ace</groupId>
         <version>1.0.0.10</version>
     </parent>
-    <version>1.0.0.5</version>
+    <version>1.0.0.7</version>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <artifactId>ace-authentication-base-projects</artifactId>
@@ -15,7 +15,7 @@
         统一认证服务
     </description>
     <properties>
-        <ace.fw.version>1.0.0.35</ace.fw.version>
+        <ace.fw.version>1.0.0.38</ace.fw.version>
         <ace.common.base.version>1.0.0.11</ace.common.base.version>
         <ace.dependency.management.version>1.0.0.12</ace.dependency.management.version>
     </properties>

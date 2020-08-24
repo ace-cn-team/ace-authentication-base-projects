@@ -1,6 +1,7 @@
 package ace.authentication.base.api.web.dao.mapper;
 
 import ace.authentication.base.define.dao.model.entity.AccountEvent;
+import ace.fw.mybatis.plus.extension.mapper.AceBaseMapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,6 +14,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2020-06-28
  */
 @Mapper
-public interface AccountEventMapper extends BaseMapper<AccountEvent> {
+public interface AccountEventMapper extends AceBaseMapper<AccountEvent> {
 
 }
