@@ -4,6 +4,7 @@ import ace.authentication.base.api.web.dao.AccountDbService;
 import ace.authentication.base.define.dao.model.entity.Account;
 import ace.authentication.base.define.model.request.FindByAppIdAndMobileRequest;
 import ace.authentication.base.define.model.request.FindByAppIdAndUserNameRequest;
+import ace.fw.logic.common.aop.Interceptor.log.annotations.LogAspect;
 import ace.fw.model.response.GenericResponseExt;
 import ace.fw.restful.base.api.web.AbstractRestfulController;
 import ace.fw.util.GenericResponseExtUtils;
@@ -18,6 +19,7 @@ import javax.validation.Valid;
  * @description
  */
 @RestController
+@LogAspect
 public class AccountBaseControllerImpl
         extends AbstractRestfulController<Account, AccountDbService>
         implements AccountBaseController {

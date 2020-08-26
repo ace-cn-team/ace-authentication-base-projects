@@ -2,6 +2,7 @@ package ace.authentication.base.api.web.controller;
 
 import ace.authentication.base.api.web.dao.AccountEventDbService;
 import ace.authentication.base.define.dao.model.entity.AccountEvent;
+import ace.fw.logic.common.aop.Interceptor.log.annotations.LogAspect;
 import ace.fw.restful.base.api.web.AbstractRestfulController;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @description
  */
 @RestController
+@LogAspect
 public class AccountEventBaseControllerImpl
         extends AbstractRestfulController<AccountEvent, AccountEventDbService>
         implements AccountEventBaseController {
