@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="" author="caspar">
+        <insert tableName="account">
+            <column name="id" value="230bab8e-c0cc-11ea-996e-d9b803d21d59"/>
+            <column name="app_id" value="230bd29f-c0cc-11ea-996e-7b383a3fd9e9"/>
+            <column name="mobile" value="15099975786"/>
+            <column name="email" value="279397942@qq.com"/>
+            <column name="user_name" value="admin"/>
+            <column name="password" value="25f9e794323b453885f5181f1b624d0b"/>
+            <column name="password_encryption_factor" value="789"/>
+            <column name="nick_name" value="admin"/>
+            <column name="avatar_url" value=""/>
+            <column name="register_source" value="pc"/>
+            <column name="state" value="1"/>
+            <column name="expire_time" value="9999-12-31 23:59:59"/>
+            <column name="update_time" valueComputed="now()"/>
+            <column name="create_time" value="now()"/>
+            <column name="row_version" value="1"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

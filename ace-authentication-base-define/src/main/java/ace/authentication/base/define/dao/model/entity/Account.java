@@ -1,7 +1,7 @@
 package ace.authentication.base.define.dao.model.entity;
 
 import ace.authentication.base.define.dao.enums.account.AccountRegisterSourceEnum;
-import ace.fw.data.model.entity.Entity;
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.Version;
@@ -28,7 +28,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel(value = "Account", description = "账号标识表")
-public class Account implements Serializable, Entity {
+public class Account implements Serializable {
 
 
     @ApiModelProperty(value = "id")

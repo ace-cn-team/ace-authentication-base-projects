@@ -6,7 +6,8 @@ import ace.authentication.base.define.model.request.FindByAppIdAndMobileRequest;
 import ace.authentication.base.define.model.request.FindByAppIdAndUserNameRequest;
 import ace.fw.logic.common.aop.Interceptor.log.annotations.LogAspect;
 import ace.fw.model.response.GenericResponseExt;
-import ace.fw.restful.base.api.web.AbstractRestfulController;
+import ace.fw.restful.base.api.web.AbstractController;
+import ace.fw.restful.base.api.web.AbstractMybatisController;
 import ace.fw.util.GenericResponseExtUtils;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +22,7 @@ import javax.validation.Valid;
 @RestController
 @LogAspect
 public class AccountBaseControllerImpl
-        extends AbstractRestfulController<Account, AccountDbService>
+        extends AbstractMybatisController<Account, String>
         implements AccountBaseController {
 
     @Override

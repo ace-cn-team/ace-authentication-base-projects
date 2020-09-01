@@ -5,7 +5,7 @@ import ace.authentication.base.define.dao.model.entity.Account;
 import ace.authentication.base.define.model.request.FindByAppIdAndMobileRequest;
 import ace.authentication.base.define.model.request.FindByAppIdAndUserNameRequest;
 import ace.fw.model.response.GenericResponseExt;
-import ace.fw.restful.base.api.service.AbstractRestfulBaseService;
+import ace.fw.restful.base.api.AbstractBaseApi;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.validation.annotation.Validated;
@@ -23,11 +23,12 @@ import javax.validation.Valid;
  */
 @FeignClient(
         name = AuthenticationConstants.BASE_FEIGN_CLIENT_NAME,
+        url = AuthenticationConstants.BASE_FEIGN_URL_CLIENT_NAME,
         contextId = "AccountBaseApi",
         path = "/" + AccountBaseApi.MODULE_RESTFUL_NAME
 )
 @Validated
-public interface AccountBaseApi extends AbstractRestfulBaseService<Account> {
+public interface AccountBaseApi extends AbstractBaseApi<Account, String> {
     String MODULE_RESTFUL_NAME = "account-identity-base";
 
     @ApiOperation(value = "根据appid与username查询惟一的账号")

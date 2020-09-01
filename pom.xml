@@ -15,7 +15,7 @@
         统一认证服务
     </description>
     <properties>
-        <ace.fw.version>1.0.0.40</ace.fw.version>
+        <ace.fw.version>1.0.0.46</ace.fw.version>
         <ace.common.base.version>1.0.0.11</ace.common.base.version>
         <ace.dependency.management.version>1.0.0.12</ace.dependency.management.version>
     </properties>
@@ -23,7 +23,6 @@
         <module>ace-authentication-base-api</module>
         <module>ace-authentication-base-api-web</module>
         <module>ace-authentication-base-api-client-autoconfigure</module>
-        <module>ace-authentication-base-api-client-junit</module>
         <module>ace-authentication-base-define</module>
     </modules>
     <dependencyManagement>

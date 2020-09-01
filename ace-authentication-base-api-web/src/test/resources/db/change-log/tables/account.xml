@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="caspar" id="202009011647-create-table-account-1">
+        <createTable tableName="account" remarks="账号表">
+            <column name="id" type="VARCHAR(36)"
+                    remarks="id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_id" type="VARCHAR(36)"
+                    remarks="appid">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mobile" type="VARCHAR(36)"
+                    remarks="手机号码"/>
+            <column name="email" type="VARCHAR(36)"
+                    remarks="电子邮箱"/>
+            <column name="user_name" type="VARCHAR(36)"
+                    remarks="账号"/>
+            <column name="password" type="VARCHAR(36)"
+                    remarks="密码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_encryption_factor" type="VARCHAR(36)"
+                    remarks="加密因子">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nick_name" type="VARCHAR(36)" defaultValue=""
+                    remarks="昵称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="avatar_url" type="VARCHAR(255)" defaultValue=""
+                    remarks="头像url">
+                <constraints nullable="false"/>
+            </column>
+            <column name="register_source"
+                    type="VARCHAR(36)"
+                    remarks="注册来源:pc-电脑浏览器端; mobile-手机浏览器端; wxpa-微信公众号; wxsa-微信小程序; ios-ios; android-安卓;">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="TINYINT" defaultValueNumeric="1"
+                    remarks="状态，0-停用，1-启用，2-锁定，3-过期，4-需修改密码">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueDate="9999-12-31 23:59:59.0" name="expire_time" remarks="过期时间" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="update_time" remarks="更新时间" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="create_time" remarks="创建时间" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="row_version" remarks="版本号和乐观锁字段,初始为1，更新自增1" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="caspar" id="202009011647-create-table-account--3">
+        <addPrimaryKey columnNames="id" constraintName="account_primary" tableName="account"/>
+    </changeSet>
+    <changeSet author="caspar" id="202009011647-create-table-account-7">
+        <addUniqueConstraint columnNames="app_id, email" constraintName="ux_appid_email" tableName="account"/>
+    </changeSet>
+    <changeSet author="caspar" id="202009011647-create-table-account-8">
+        <addUniqueConstraint columnNames="app_id, mobile" constraintName="ux_appid_mobile" tableName="account"/>
+    </changeSet>
+    <changeSet author="caspar" id="202009011647-create-table-account-9">
+        <addUniqueConstraint columnNames="app_id, user_name" constraintName="ux_appid_username" tableName="account"/>
+    </changeSet>
+    <changeSet author="caspar" id="202009011647-create-table-account-11">
+        <createIndex indexName="ix_appid_createtime" tableName="account">
+            <column name="app_id"/>
+            <column name="create_time"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

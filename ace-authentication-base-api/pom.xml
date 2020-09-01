@@ -13,10 +13,6 @@
     <dependencies>
         <dependency>
             <groupId>org.ace</groupId>
-            <artifactId>ace-fw-data</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.ace</groupId>
             <artifactId>ace-authentication-base-define</artifactId>
         </dependency>
         <dependency>

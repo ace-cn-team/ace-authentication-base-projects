@@ -1,6 +1,6 @@
 package ace.authentication.base.define.dao.model.entity;
 
-import ace.fw.data.model.entity.Entity;
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.Version;
 
@@ -29,7 +29,7 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel(value = "AccountEvent", description = "账号事件日志表")
-public class AccountEvent implements Serializable, Entity {
+public class AccountEvent implements Serializable {
 
 
     @ApiModelProperty(value = "id")

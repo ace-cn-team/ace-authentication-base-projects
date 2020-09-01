@@ -22,6 +22,7 @@ import javax.validation.Valid;
  */
 @FeignClient(
         name = AuthenticationConstants.BASE_FEIGN_CLIENT_NAME,
+        url = AuthenticationConstants.BASE_FEIGN_URL_CLIENT_NAME,
         contextId = "TestBaseApi",
         path = "/" + TestBaseApi.MODULE_RESTFUL_NAME
 )

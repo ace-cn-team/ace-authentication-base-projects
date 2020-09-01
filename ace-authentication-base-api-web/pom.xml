@@ -15,14 +15,9 @@
             <groupId>org.ace</groupId>
             <artifactId>ace-authentication-base-api</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.ace</groupId>
             <artifactId>ace-fw-ms-application-autoconfigure</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.ace</groupId>
-            <artifactId>ace-fw-ms-nacos-discovery-autoconfigure</artifactId>
         </dependency>
         <dependency>
             <groupId>org.ace</groupId>
@@ -48,19 +43,65 @@
             <groupId>org.ace</groupId>
             <artifactId>ace-fw-logic-common-autoconfigure</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.ace</groupId>
-            <artifactId>ace-fw-junit-test-starter</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
-
+    <profiles>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.ace</groupId>
+                    <artifactId>ace-fw-ms-nacos-discovery-autoconfigure</artifactId>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>test</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.ace</groupId>
+                    <artifactId>ace-fw-junit-test-starter</artifactId>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.ace</groupId>
+                    <artifactId>ace-authentication-base-api-client-autoconfigure</artifactId>
+                    <scope>test</scope>
+                    <exclusions>
+<!--                        <exclusion>-->
+<!--                            <groupId>org.ace</groupId>-->
+<!--                            <artifactId>ace-fw-ms-nacos-discovery-autoconfigure</artifactId>-->
+<!--                        </exclusion>-->
+                        <exclusion>
+                            <artifactId>spring-cloud-starter-openfeign</artifactId>
+                            <groupId>org.springframework.cloud</groupId>
+                        </exclusion>
+                        <exclusion>
+                            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                            <groupId>com.alibaba.cloud</groupId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+                <dependency>
+                    <groupId>org.liquibase</groupId>
+                    <artifactId>liquibase-core</artifactId>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
     <build>
         <finalName>${project.name}</finalName>
         <plugins>

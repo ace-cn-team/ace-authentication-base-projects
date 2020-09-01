@@ -1,11 +1,10 @@
 package ace.authentication.base.api.web.dao.impl;
 
 
-import ace.authentication.base.api.web.dao.mapper.AccountMapper;
 import ace.authentication.base.api.web.dao.AccountDbService;
-
+import ace.authentication.base.api.web.dao.mapper.AccountMapper;
 import ace.authentication.base.define.dao.model.entity.Account;
-import ace.fw.mybatis.plus.extension.service.impl.MybatisPlusDbServiceImpl;
+import ace.fw.restful.base.api.plugin.mybatisplus.impl.MybatisPlusDbServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,7 +17,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AccountDbServiceImpl
-        extends MybatisPlusDbServiceImpl<Account, AccountMapper>
+        extends MybatisPlusDbServiceImpl<Account, String, AccountMapper>
         implements AccountDbService {
 
 }

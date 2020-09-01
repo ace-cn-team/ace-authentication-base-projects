@@ -2,26 +2,28 @@ package ace.authentication.base.api.web.biz;
 
 import ace.authentication.base.api.AccountBaseApi;
 import ace.authentication.base.api.AccountEventBaseApi;
-import ace.authentication.base.api.client.application.AccountIdentityClientJUnitBaseApplication;
 import ace.authentication.base.api.IdentityBaseApi;
+import ace.authentication.base.api.web.AuthenticationBaseApplication;
 import ace.authentication.base.define.dao.enums.account.AccountRegisterSourceEnum;
-import ace.authentication.base.define.dao.enums.accountevent.AccountEventEventTypeEnum;
 import ace.authentication.base.define.dao.enums.account.AccountStateEnum;
-import ace.authentication.base.define.dao.model.entity.AccountEvent;
+import ace.authentication.base.define.dao.enums.accountevent.AccountEventEventTypeEnum;
 import ace.authentication.base.define.dao.model.entity.Account;
+import ace.authentication.base.define.dao.model.entity.AccountEvent;
 import ace.authentication.base.define.enums.LoginSourceEnum;
 import ace.authentication.base.define.model.request.*;
 import ace.authentication.base.define.model.vo.LoginSuccessEventLogParams;
 import ace.authentication.base.define.model.vo.RegisterSuccessEventLogParams;
-import ace.fw.data.model.request.resful.PageQueryRequest;
 import ace.fw.json.JsonUtils;
 import ace.fw.logic.common.util.AceUUIDUtils;
 import ace.fw.util.AceLocalDateTimeUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
@@ -35,9 +37,11 @@ import java.util.Map;
  * @description
  */
 @Slf4j
+@EnableFeignClients
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = AccountIdentityClientJUnitBaseApplication.class)
-public class CheckAllBizTest {
+@SpringBootTest(classes = AuthenticationBaseApplication.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@FixMethodOrder(value = MethodSorters.NAME_ASCENDING)
+public class TestClientBaseApi {
 
     private final static String TEST_MOBILE = "15099975787";
     @Autowired
@@ -203,6 +207,7 @@ public class CheckAllBizTest {
                 .expireTime(AceLocalDateTimeUtils.MAX_MYSQL)
                 .email(null)
                 .avatarUrl("")
+                .registerSource(AccountRegisterSourceEnum.PC.getCode())
                 .build();
 
         Map<String, Object> eventParamsMap = new HashMap<>();

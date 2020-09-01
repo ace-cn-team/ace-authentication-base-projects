@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="caspar" id="202009011652-create-table-account_event-2">
+        <createTable remarks="账号事件表,用于分布式事务，会定时删除过期数据" tableName="account_event">
+            <column name="id" remarks="id" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_id" remarks="appid" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_id" remarks="账号id" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="event_type" remarks="事件类型,0-注册,1-登入,2-登出,3-修改密码" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="event_params" remarks="事件参数-json格式" type="JSON">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="update_time" remarks="更新时间" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="create_time" remarks="创建时间" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="row_version" remarks="版本号和乐观锁字段,初始为1，更新自增1" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="caspar" id="202009011652-create-table-account_event-4">
+        <addPrimaryKey columnNames="id" constraintName="account_event_primary" tableName="account_event"/>
+    </changeSet>
+    <changeSet author="caspar" id="202009011652-create-table-account_event-10">
+        <createIndex indexName="ix_appid_accountid_status_createtime" tableName="account_event">
+            <column name="app_id"/>
+            <column name="account_id"/>
+            <column name="create_time"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

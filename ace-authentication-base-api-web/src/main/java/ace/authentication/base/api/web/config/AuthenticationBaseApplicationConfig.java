@@ -1,6 +1,7 @@
 package ace.authentication.base.api.web.config;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

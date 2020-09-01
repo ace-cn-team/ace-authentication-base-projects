@@ -4,6 +4,7 @@ import ace.authentication.base.api.AccountBaseApi;
 import ace.authentication.base.api.IdentityBaseApi;
 import ace.authentication.base.api.web.AuthenticationBaseApplication;
 import ace.authentication.base.api.web.dao.AccountEventDbService;
+import ace.authentication.base.define.dao.enums.account.AccountRegisterSourceEnum;
 import ace.authentication.base.define.dao.enums.account.AccountStateEnum;
 import ace.authentication.base.define.dao.enums.accountevent.AccountEventEventTypeEnum;
 import ace.authentication.base.define.dao.model.entity.Account;
@@ -13,10 +14,14 @@ import ace.fw.json.JsonUtils;
 import ace.fw.logic.common.util.AceUUIDUtils;
 import ace.fw.model.response.GenericResponseExt;
 import ace.fw.util.AceLocalDateTimeUtils;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
@@ -29,9 +34,12 @@ import java.util.Map;
  * @create 2020/6/28 14:32
  * @description
  */
+@Slf4j
+
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = AuthenticationBaseApplication.class)
-public class CheckAllBizTest {
+@SpringBootTest(classes = AuthenticationBaseApplication.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@FixMethodOrder(value = MethodSorters.NAME_ASCENDING)
+public class TestAllBiz {
 
     @Autowired
     private AccountBaseApi accountBaseApi;
@@ -59,6 +67,7 @@ public class CheckAllBizTest {
                 .mobile(null)
                 .nickName("")
                 .state(AccountStateEnum.ENABLE.getCode())
+                .registerSource(AccountRegisterSourceEnum.PC.getCode())
                 .build();
         GenericResponseExt<Boolean> saveResponse = accountBaseApi.save(account);
         saveResponse.check();
@@ -97,6 +106,7 @@ public class CheckAllBizTest {
                 .mobile(null)
                 .nickName("")
                 .state(AccountStateEnum.ENABLE.getCode())
+                .registerSource(AccountRegisterSourceEnum.PC.getCode())
                 .build();
 
 
@@ -136,6 +146,7 @@ public class CheckAllBizTest {
                 .updateTime(LocalDateTime.now())
                 .createTime(LocalDateTime.now())
                 .rowVersion(1)
+                .registerSource(AccountRegisterSourceEnum.PC.getCode())
                 .build();
 
 
