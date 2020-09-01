@@ -7,7 +7,7 @@
         <groupId>org.ace</groupId>
         <version>1.0.0.10</version>
     </parent>
-    <version>1.0.0.9</version>
+    <version>1.0.0.10</version>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <artifactId>ace-authentication-base-projects</artifactId>
@@ -17,7 +17,7 @@
     <properties>
         <ace.fw.version>1.0.0.46</ace.fw.version>
         <ace.common.base.version>1.0.0.11</ace.common.base.version>
-        <ace.dependency.management.version>1.0.0.12</ace.dependency.management.version>
+        <ace.dependency.management.version>1.0.0.14</ace.dependency.management.version>
     </properties>
     <modules>
         <module>ace-authentication-base-api</module>

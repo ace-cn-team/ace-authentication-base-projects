@@ -15,15 +15,21 @@ import ace.fw.logic.common.util.AceUUIDUtils;
 import ace.fw.model.response.GenericResponseExt;
 import ace.fw.util.AceLocalDateTimeUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.h2.command.ddl.DropDatabase;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.experimental.categories.Categories;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
+import org.junit.runners.Suite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.sql.DataSource;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,6 +42,7 @@ import java.util.Map;
  */
 @Slf4j
 
+@EnableFeignClients
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = AuthenticationBaseApplication.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @FixMethodOrder(value = MethodSorters.NAME_ASCENDING)
@@ -168,4 +175,6 @@ public class TestAllBiz {
                 .accountEvent(accountEvent)
                 .build());
     }
+
+
 }
