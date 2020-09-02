@@ -18,7 +18,7 @@ public interface AuthenticationConstants {
     /**
      * base层微服务openfeign配置URL
      */
-    String BASE_FEIGN_URL_CLIENT_NAME = "${ace.ms.service.api.ace-authentication-base-api.url:http://localhost:8080}";
+    String BASE_FEIGN_URL_CLIENT_NAME = "${ace.ms.service.api.ace-authentication-base-api.url:}";
     /**
      * authentication-base-api是否开启openfeign注入
      */
