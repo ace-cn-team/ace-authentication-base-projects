@@ -48,6 +48,7 @@ public class AccountEvent implements Serializable {
     @ApiModelProperty(value = "事件参数-json格式")
     private String eventParams;
 
+    @Version
     @ApiModelProperty(value = "更新时间")
     private LocalDateTime updateTime;
 

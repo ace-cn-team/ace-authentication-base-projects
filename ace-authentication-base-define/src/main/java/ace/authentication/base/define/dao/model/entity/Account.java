@@ -70,6 +70,7 @@ public class Account implements Serializable {
     @ApiModelProperty(value = "过期时间")
     private LocalDateTime expireTime;
 
+    @Version
     @ApiModelProperty(value = "更新时间")
     private LocalDateTime updateTime;
 
